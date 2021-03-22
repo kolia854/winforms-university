@@ -1,0 +1,10 @@
+C:\Users\kolia\source\repos\WindowsForms Lab2\bin\Debug\WindowsForms Lab2.exe.config
+C:\Users\kolia\source\repos\WindowsForms Lab2\bin\Debug\WindowsForms Lab2.exe
+C:\Users\kolia\source\repos\WindowsForms Lab2\bin\Debug\WindowsForms Lab2.pdb
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.csprojAssemblyReference.cache
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms_Lab2.Form1.resources
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms_Lab2.Properties.Resources.resources
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.csproj.GenerateResource.cache
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.csproj.CoreCompileInputs.cache
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.exe
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.pdb
