@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -26,13 +27,17 @@ namespace WindowsForms_Lab2
             var student = new Student();
             var adress = new AdressClass();
 
-            if (SpPicker.Text != "")
+            string UnacceptableSymbols = "!@#$%^&*()_+=-|/.?,<>[]{}";
+            string Numbers = "1234567890";
+            bool Uncorrect = false;
+
+            if (comboBox1.Text == "")
             {
-                adress.City = SpPicker.Text;
+                throw new Exception("Введите адрес корректно");
             }
             else
             {
-                throw new Exception("Введите адрес корректно");
+                adress.City = comboBox1.Text;
             }
 
             adress.Street = Street.Text;
@@ -45,13 +50,28 @@ namespace WindowsForms_Lab2
                 student.Brsm = true;
             else student.Brsm = false;
 
-            if (Fio.Text != "")
+            foreach (char s in UnacceptableSymbols)
             {
-                student.Fio = Fio.Text;
+                if (Fio.Text.Contains(s))
+                    Uncorrect = true;
+            }
+            foreach (char s in Numbers)
+            {
+                if (Fio.Text.Contains(s))
+                    Uncorrect = true;
+            }
+
+            if (Fio.Text == "")
+            {
+                throw new Exception("ФИО - обязательное поле");
+            }
+            else if (Uncorrect)
+            {
+                throw new Exception("Поле ФИО содержит недопустимые символы");
             }
             else
             {
-                throw new Exception("ФИО - обязательное поле");
+                student.Fio = Fio.Text;
             }
 
 
@@ -104,7 +124,7 @@ namespace WindowsForms_Lab2
                 }
             }
 
-            
+            label9.Text = "Объект добавлен";
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -158,6 +178,8 @@ namespace WindowsForms_Lab2
 
         private void button3_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
+
             XmlSerializer formatter = new XmlSerializer(typeof(List<Student>));
             List<Student> SavedStudents = new List<Student>();
             using (FileStream fs = new FileStream("Students.xml", FileMode.OpenOrCreate))
@@ -165,27 +187,64 @@ namespace WindowsForms_Lab2
 
                 SavedStudents = (List<Student>)formatter.Deserialize(fs);
             }
-            foreach (Student st in SavedStudents)
+
+            label9.Text = "Сохраненных объектов: " + SavedStudents.Count;
+
+            if (SearchText.Text == null)
             {
-                string info;
-                info = st.Fio;
-                listBox1.Items.Add(info);
-                info = "Адрес: " + st.Adress.City + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
-                listBox1.Items.Add(info);
-                info = "Дата рождения: " + st.DateOfBirth.Year + " " + st.DateOfBirth.Month + " " + st.DateOfBirth.Day;
-                listBox1.Items.Add(info);
-                info = "Возраст: " + st.Age;
-                listBox1.Items.Add(info);
-                info = "Пол: " + st.Sex;
-                listBox1.Items.Add(info);
-                info = "Специальность: " + st.Speciality;
-                listBox1.Items.Add(info);
-                info = "Курс: " + st.Course;
-                listBox1.Items.Add(info);
-                info = "Член брсм: " + st.Brsm;
-                listBox1.Items.Add(info);
+                foreach (Student st in SavedStudents)
+                {
+                    string info;
+                    info = st.Fio;
+                    listBox1.Items.Add(info);
+                    info = "Адрес: " + st.Adress.City + " " + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
+                    listBox1.Items.Add(info);
+                    info = "Дата рождения: " + st.DateOfBirth.Year + " " + st.DateOfBirth.Month + " " + st.DateOfBirth.Day;
+                    listBox1.Items.Add(info);
+                    info = "Возраст: " + st.Age;
+                    listBox1.Items.Add(info);
+                    info = "Пол: " + st.Sex;
+                    listBox1.Items.Add(info);
+                    info = "Специальность: " + st.Speciality;
+                    listBox1.Items.Add(info);
+                    info = "Курс: " + st.Course;
+                    listBox1.Items.Add(info);
+                    info = "Член брсм: " + st.Brsm;
+                    listBox1.Items.Add(info);
+                    listBox1.Items.Add("");
+                }
             }
-          
+
+            else
+            {
+
+                Regex search = new Regex($@"{SearchText.Text}(\w*)");
+                foreach (Student st in SavedStudents)
+                {
+                    MatchCollection matches = search.Matches(st.Fio);
+                    if (matches.Count > 0)
+                    {
+                        string info;
+                        info = st.Fio;
+                        listBox1.Items.Add(info);
+                        info = "Адрес: " + st.Adress.City + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
+                        listBox1.Items.Add(info);
+                        info = "Дата рождения: " + st.DateOfBirth.Year + " " + st.DateOfBirth.Month + " " + st.DateOfBirth.Day;
+                        listBox1.Items.Add(info);
+                        info = "Возраст: " + st.Age;
+                        listBox1.Items.Add(info);
+                        info = "Пол: " + st.Sex;
+                        listBox1.Items.Add(info);
+                        info = "Специальность: " + st.Speciality;
+                        listBox1.Items.Add(info);
+                        info = "Курс: " + st.Course;
+                        listBox1.Items.Add(info);
+                        info = "Член брсм: " + st.Brsm;
+                        listBox1.Items.Add(info);
+                        listBox1.Items.Add("");
+                    }
+                }
+            }
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -194,6 +253,32 @@ namespace WindowsForms_Lab2
         }
 
         private void CityPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            SearchForm newForm = new SearchForm(this);
+            newForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("версия 22.2.2.2 (сделал Коля Бовкун)");
+        }
+
+        private void label9_Click_1(object sender, EventArgs e)
         {
 
         }

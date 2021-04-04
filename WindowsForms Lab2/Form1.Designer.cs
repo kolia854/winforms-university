@@ -30,8 +30,7 @@ namespace WindowsForms_Lab2
         private void InitializeComponent()
         {
             this.SaveButton = new System.Windows.Forms.Button();
-            this.ClearButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Output = new System.Windows.Forms.Button();
             this.Fio = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -58,6 +57,10 @@ namespace WindowsForms_Lab2
             this.Flat = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.SearchText = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -73,25 +76,15 @@ namespace WindowsForms_Lab2
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // ClearButton
+            // Output
             // 
-            this.ClearButton.Location = new System.Drawing.Point(273, 243);
-            this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(167, 59);
-            this.ClearButton.TabIndex = 1;
-            this.ClearButton.Text = "Очистить";
-            this.ClearButton.UseVisualStyleBackColor = true;
-            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(513, 243);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(167, 59);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Смотреть";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.Output.Location = new System.Drawing.Point(471, 244);
+            this.Output.Name = "Output";
+            this.Output.Size = new System.Drawing.Size(167, 59);
+            this.Output.TabIndex = 2;
+            this.Output.Text = "Смотреть";
+            this.Output.UseVisualStyleBackColor = true;
+            this.Output.Click += new System.EventHandler(this.button3_Click);
             // 
             // Fio
             // 
@@ -213,7 +206,7 @@ namespace WindowsForms_Lab2
             "Гомель",
             "Гродно",
             "Минск"});
-            this.comboBox1.Location = new System.Drawing.Point(199, 162);
+            this.comboBox1.Location = new System.Drawing.Point(204, 164);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 28);
             this.comboBox1.TabIndex = 16;
@@ -362,15 +355,56 @@ namespace WindowsForms_Lab2
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(11, 309);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(667, 164);
+            this.listBox1.Size = new System.Drawing.Size(627, 324);
             this.listBox1.TabIndex = 31;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // SearchText
+            // 
+            this.SearchText.Location = new System.Drawing.Point(204, 276);
+            this.SearchText.Name = "SearchText";
+            this.SearchText.Size = new System.Drawing.Size(247, 26);
+            this.SearchText.TabIndex = 33;
+            this.SearchText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(247, 211);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(167, 59);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Сложный поиск";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(11, 194);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 31);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "a?";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(436, 194);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 20);
+            this.label9.TabIndex = 36;
+            this.label9.Click += new System.EventHandler(this.label9_Click_1);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 543);
+            this.ClientSize = new System.Drawing.Size(648, 644);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SearchText);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.Flat);
             this.Controls.Add(this.label5);
@@ -391,8 +425,7 @@ namespace WindowsForms_Lab2
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Fio);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.Output);
             this.Controls.Add(this.SaveButton);
             this.Name = "Form1";
             this.Text = "Регистрация";
@@ -409,8 +442,7 @@ namespace WindowsForms_Lab2
         #endregion
 
         private System.Windows.Forms.Button SaveButton;
-        private System.Windows.Forms.Button ClearButton;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Output;
         private System.Windows.Forms.TextBox Fio;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -436,7 +468,11 @@ namespace WindowsForms_Lab2
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox Flat;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox SearchText;
+        private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label9;
     }
 }
 

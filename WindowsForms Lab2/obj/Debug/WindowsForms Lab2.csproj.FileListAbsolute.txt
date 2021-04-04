@@ -8,3 +8,4 @@ C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.csproj
 C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.csproj.CoreCompileInputs.cache
 C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.exe
 C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms Lab2.pdb
+C:\Users\kolia\source\repos\WindowsForms Lab2\obj\Debug\WindowsForms_Lab2.SearchForm.resources
