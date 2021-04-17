@@ -1,67 +1,18 @@
 <?xml version="1.0"?>
 <ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Student>
-    <Fio>женя</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>2</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИТ</Speciality>
-    <Brsm>true</Brsm>
     <Adress>
-      <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
+      <City />
+      <Street />
+      <HouseNumber />
+      <FlatNumber />
     </Adress>
-  </Student>
-  <Student>
-    <Fio>Анон</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>1</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИБМС</Speciality>
-    <Brsm>true</Brsm>
-    <Adress>
-      <City>Витебск</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
-    </Adress>
-  </Student>
-  <Student>
-    <Fio>денс</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>2</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИБМС</Speciality>
-    <Brsm>true</Brsm>
-    <Adress>
-      <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
-    </Adress>
-  </Student>
-  <Student>
-    <Fio>кля</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>2</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИБМС</Speciality>
-    <Brsm>true</Brsm>
-    <Adress>
-      <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
-    </Adress>
+    <Fio />
+    <Age>0</Age>
+    <DateOfBirth>2021-04-16T14:33:34.0661014+03:00</DateOfBirth>
+    <Course>0</Course>
+    <Avg>2</Avg>
+    <Speciality />
+    <Brsm>false</Brsm>
   </Student>
 </ArrayOfStudent>

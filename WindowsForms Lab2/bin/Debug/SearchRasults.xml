@@ -1,67 +1,51 @@
 <?xml version="1.0"?>
 <ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Student>
-    <Fio>женя</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
+    <Fio>Коленька</Fio>
+    <Age>23</Age>
+    <DateOfBirth>1998-07-03T11:47:05</DateOfBirth>
     <Course>2</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИТ</Speciality>
-    <Brsm>true</Brsm>
+    <Avg>5</Avg>
+    <Sex>М</Sex>
+    <Speciality>ИСИТ</Speciality>
+    <Brsm>false</Brsm>
     <Adress>
       <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
+      <Street>Товово</Street>
+      <HouseNumber>3</HouseNumber>
+      <FlatNumber>12</FlatNumber>
     </Adress>
   </Student>
   <Student>
-    <Fio>Анон</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>1</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
+    <Fio>Костенька</Fio>
+    <Age>24</Age>
+    <DateOfBirth>1997-12-12T11:47:05</DateOfBirth>
+    <Course>2</Course>
+    <Avg>9</Avg>
+    <Sex>М</Sex>
     <Speciality>ПОИБМС</Speciality>
     <Brsm>true</Brsm>
     <Adress>
       <City>Витебск</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
+      <Street>Коаовоо</Street>
+      <HouseNumber>23</HouseNumber>
+      <FlatNumber>123</FlatNumber>
     </Adress>
   </Student>
   <Student>
-    <Fio>денс</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
+    <Fio>Сереженька</Fio>
+    <Age>19</Age>
+    <DateOfBirth>2002-07-12T11:47:05</DateOfBirth>
     <Course>2</Course>
-    <Avg>4</Avg>
+    <Avg>9</Avg>
     <Sex>Ж</Sex>
-    <Speciality>ПОИБМС</Speciality>
+    <Speciality>ДЭИВИ</Speciality>
     <Brsm>true</Brsm>
     <Adress>
-      <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
-    </Adress>
-  </Student>
-  <Student>
-    <Fio>кля</Fio>
-    <Age>21</Age>
-    <DateOfBirth>2000-02-09T12:51:18</DateOfBirth>
-    <Course>2</Course>
-    <Avg>4</Avg>
-    <Sex>Ж</Sex>
-    <Speciality>ПОИБМС</Speciality>
-    <Brsm>true</Brsm>
-    <Adress>
-      <City>Брест</City>
-      <Street>йцв</Street>
-      <HouseNumber>11</HouseNumber>
-      <FlatNumber>22</FlatNumber>
+      <City>Гомель</City>
+      <Street>АУАввввв</Street>
+      <HouseNumber>23</HouseNumber>
+      <FlatNumber>123</FlatNumber>
     </Adress>
   </Student>
 </ArrayOfStudent>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace WindowsForms_Lab2
 {
@@ -27,63 +28,37 @@ namespace WindowsForms_Lab2
             var student = new Student();
             var adress = new AdressClass();
 
-            string UnacceptableSymbols = "!@#$%^&*()_+=-|/.?,<>[]{}";
-            string Numbers = "1234567890";
-            bool Uncorrect = false;
-
-            if (comboBox1.Text == "")
-            {
-                throw new Exception("Введите адрес корректно");
-            }
-            else
-            {
-                adress.City = comboBox1.Text;
-            }
+            adress.City = comboBox1.Text;
 
             adress.Street = Street.Text;
             adress.HouseNumber = Home.Text;
             adress.FlatNumber = Flat.Text;
 
+            var AdressResults = new List<ValidationResult>();
+            var Context = new ValidationContext(adress);
+            string strWithErrror = "";
+            if (!Validator.TryValidateObject(adress, Context, AdressResults, true))
+            {
+                foreach (var error in AdressResults)
+                {
+                    strWithErrror += error.ErrorMessage + "\n";
+                    label9.Text = "Программа приостановлена";
+                }
+                MessageBox.Show(strWithErrror);
+                return;
+            }
+
             student.Adress = adress;
 
             if (BRSMcheckBox.Checked)
                 student.Brsm = true;
-            else student.Brsm = false;
-
-            foreach (char s in UnacceptableSymbols)
-            {
-                if (Fio.Text.Contains(s))
-                    Uncorrect = true;
-            }
-            foreach (char s in Numbers)
-            {
-                if (Fio.Text.Contains(s))
-                    Uncorrect = true;
-            }
-
-            if (Fio.Text == "")
-            {
-                throw new Exception("ФИО - обязательное поле");
-            }
-            else if (Uncorrect)
-            {
-                throw new Exception("Поле ФИО содержит недопустимые символы");
-            }
             else
-            {
-                student.Fio = Fio.Text;
-            }
+                student.Brsm = false;
 
+            student.Fio = Fio.Text;
 
-            if (dateTimePicker1.Value.Year < DateTime.Now.Year - 15 && dateTimePicker1.Value.Year > 1900)
-            {
-                student.DateOfBirth = dateTimePicker1.Value;
-            }
-            else
-            {
-                throw new Exception("указанный возраст не подходит для студента");
-            }
-
+            student.DateOfBirth = dateTimePicker1.Value;
+     
             foreach (var b in groupBox1.Controls)
             {
                 if (b is RadioButton)
@@ -92,12 +67,8 @@ namespace WindowsForms_Lab2
                         student.Course = Convert.ToInt32((b as RadioButton).Text);
                 }
             }
-            if (student.Course == 0)
-                throw new Exception("Курс - обязательное поле!");
 
             student.Speciality = SpPicker.Text;
-            if (student.Speciality == null)
-                throw new Exception("Специальность - обязательное поле!");
 
             student.Avg = Convert.ToInt32(numericUpDown1.Value);
 
@@ -112,11 +83,24 @@ namespace WindowsForms_Lab2
 
             student.Age = DateTime.Now.Year - dateTimePicker1.Value.Year;
 
+            var resultsSt = new List<ValidationResult>();
+            var context = new ValidationContext(student);
+            strWithErrror = "";
+
+            if (!Validator.TryValidateObject(student, context, resultsSt, true))
+            {
+                foreach (var error in resultsSt)
+                {
+                    strWithErrror += error.ErrorMessage + "\n";
+                    label9.Text = "Программа приостановлена";
+
+                }
+                MessageBox.Show(strWithErrror);
+                return;
+            }
+
             studentList.Add(student);
-
             XmlSerializer formatter = new XmlSerializer(typeof(List<Student>));
-
-            // получаем поток, куда будем записывать сериализованный объект
             using (FileStream fs = new FileStream("Students.xml", FileMode.Create))
             {
                 {
@@ -190,14 +174,14 @@ namespace WindowsForms_Lab2
 
             label9.Text = "Сохраненных объектов: " + SavedStudents.Count;
 
-            if (SearchText.Text == null)
+            if (SearchText.Text == "")
             {
                 foreach (Student st in SavedStudents)
                 {
                     string info;
                     info = st.Fio;
                     listBox1.Items.Add(info);
-                    info = "Адрес: " + st.Adress.City + " " + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
+                    info = "Адрес: " + st.Adress.City + " ул." + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
                     listBox1.Items.Add(info);
                     info = "Дата рождения: " + st.DateOfBirth.Year + " " + st.DateOfBirth.Month + " " + st.DateOfBirth.Day;
                     listBox1.Items.Add(info);
@@ -227,7 +211,7 @@ namespace WindowsForms_Lab2
                         string info;
                         info = st.Fio;
                         listBox1.Items.Add(info);
-                        info = "Адрес: " + st.Adress.City + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
+                        info = "Адрес: " + st.Adress.City + " ул." + st.Adress.Street + " д." + st.Adress.HouseNumber + " кв." + st.Adress.FlatNumber;
                         listBox1.Items.Add(info);
                         info = "Дата рождения: " + st.DateOfBirth.Year + " " + st.DateOfBirth.Month + " " + st.DateOfBirth.Day;
                         listBox1.Items.Add(info);
@@ -279,6 +263,11 @@ namespace WindowsForms_Lab2
         }
 
         private void label9_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

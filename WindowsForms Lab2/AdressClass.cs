@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace WindowsForms_Lab2
 {
     [Serializable]
+    [AdressValidation]    
     public class AdressClass
     {
         public string City;

@@ -429,6 +429,7 @@ namespace WindowsForms_Lab2
             this.Controls.Add(this.SaveButton);
             this.Name = "Form1";
             this.Text = "Регистрация";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
