@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 namespace WindowsForms_Lab2
 {
     [Serializable]
-    public class Student
+    public class Student : Prototype
     {
         private string fio;
         private int age;
@@ -74,6 +74,39 @@ namespace WindowsForms_Lab2
         {
             get { return brsm; }
             set { brsm = value; }
+        }
+
+        public Student(string fio, int age, DateTime birth, int course, int avg, string sex, string speciality, bool brsm, AdressClass adress)
+        {
+            Fio = fio;
+            Age = age;
+            DateOfBirth = birth;
+            Course = course;
+            Avg = avg;
+            Sex = sex;
+            Speciality = speciality;
+            Brsm = brsm;
+            Adress = adress;
+        }
+
+        public object Clone()
+        {
+            Student ClonedStudent = new Student();
+            ClonedStudent.Adress = this.Adress;
+            ClonedStudent.Course = this.Course;
+            ClonedStudent.Fio = this.Fio;
+            ClonedStudent.sex = this.Sex;
+            ClonedStudent.Speciality = this.Speciality;
+            ClonedStudent.Avg = this.Avg;
+            ClonedStudent.Age = this.Age;
+            ClonedStudent.Brsm = this.Brsm;
+            ClonedStudent.DateOfBirth = this.DateOfBirth;
+            return ClonedStudent;
+        }   
+
+        public Student()
+        {
+
         }
     }
 }

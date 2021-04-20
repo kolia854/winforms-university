@@ -16,6 +16,17 @@ namespace WindowsForms_Lab2
 {
     public partial class Form1 : Form
     {
+        public static Form1 instance;
+
+        public static Form1 GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new Form1();
+            }
+            return instance;
+        }
+
         public List<Student> studentList = new List<Student>();
 
         public Form1()
@@ -25,14 +36,10 @@ namespace WindowsForms_Lab2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var student = new Student();
-            var adress = new AdressClass();
+            StudentFactory factory = new StudentFactory();
+            var adress = factory.CreateAdress(comboBox1.Text, Street.Text, Home.Text, Flat.Text);
 
-            adress.City = comboBox1.Text;
-
-            adress.Street = Street.Text;
-            adress.HouseNumber = Home.Text;
-            adress.FlatNumber = Flat.Text;
+            
 
             var AdressResults = new List<ValidationResult>();
             var Context = new ValidationContext(adress);
@@ -48,44 +55,38 @@ namespace WindowsForms_Lab2
                 return;
             }
 
-            student.Adress = adress;
-
-            if (BRSMcheckBox.Checked)
-                student.Brsm = true;
-            else
-                student.Brsm = false;
-
-            student.Fio = Fio.Text;
-
-            student.DateOfBirth = dateTimePicker1.Value;
-     
+            int Course = 1;
             foreach (var b in groupBox1.Controls)
             {
                 if (b is RadioButton)
                 {
                     if ((b as RadioButton).Checked)
-                        student.Course = Convert.ToInt32((b as RadioButton).Text);
+                        Course = Convert.ToInt32((b as RadioButton).Text);
                 }
             }
 
-            student.Speciality = SpPicker.Text;
 
-            student.Avg = Convert.ToInt32(numericUpDown1.Value);
+            int Avg = Convert.ToInt32(numericUpDown1.Value);
 
+            string Sex = "";
             foreach (var b in groupBox2.Controls)
             {
                 if (b is RadioButton)
                 {
                     if ((b as RadioButton).Checked)
-                        student.Sex = (b as RadioButton).Text;
+                        Sex = (b as RadioButton).Text;
                 }
             }
 
-            student.Age = DateTime.Now.Year - dateTimePicker1.Value.Year;
+            int Age = DateTime.Now.Year - dateTimePicker1.Value.Year;
+
+            var student = factory.CreateStudent(Fio.Text, Age, dateTimePicker1.Value, Course, Avg, Sex, SpPicker.Text, BRSMcheckBox.Checked, adress);
 
             var resultsSt = new List<ValidationResult>();
             var context = new ValidationContext(student);
             strWithErrror = "";
+
+
 
             if (!Validator.TryValidateObject(student, context, resultsSt, true))
             {

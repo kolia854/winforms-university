@@ -14,10 +14,7 @@ namespace WindowsForms_Lab2
             AdressClass adress = obj as AdressClass;
             int MistakeCounter = 0;
             int num = 0;
-            string UnacceptableSymbols = "!@#$%^&*()_+=|.?,<>[]{}";
             string Numbers = "1234567890";
-            string Letters = "qwertyuiopasdfghjklzxcvbnmйцукенгшщзхъфывапролджэячсмитьбю" +
-                "QWERTYUIOPASDFGHJKLZXCVBNMЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ";
             foreach (char s in Numbers)
             {
                 if (adress.City.Contains(s))

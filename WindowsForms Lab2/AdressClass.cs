@@ -11,7 +11,6 @@ namespace WindowsForms_Lab2
     public class AdressClass
     {
         public string City;
-        public string Index;
         public string Street;
         public string HouseNumber;
         public string FlatNumber;

@@ -2,17 +2,18 @@
 <ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Student>
     <Adress>
-      <City />
-      <Street />
-      <HouseNumber />
-      <FlatNumber />
+      <City>Витебск</City>
+      <Street>12311231</Street>
+      <HouseNumber>12312</HouseNumber>
+      <FlatNumber>123</FlatNumber>
     </Adress>
-    <Fio />
-    <Age>0</Age>
-    <DateOfBirth>2021-04-16T14:33:34.0661014+03:00</DateOfBirth>
-    <Course>0</Course>
-    <Avg>2</Avg>
-    <Speciality />
-    <Brsm>false</Brsm>
+    <Fio>wdqwd</Fio>
+    <Age>24</Age>
+    <DateOfBirth>1997-03-01T21:10:51</DateOfBirth>
+    <Course>1</Course>
+    <Avg>4</Avg>
+    <Sex>М</Sex>
+    <Speciality>ИСИТ</Speciality>
+    <Brsm>true</Brsm>
   </Student>
 </ArrayOfStudent>
