@@ -57,6 +57,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface1.cs" />
+    <Compile Include="KolyaBovkun.cs" />
+    <Compile Include="KolyaBrsm.cs" />
+    <Compile Include="KolyaCourse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prototype.cs" />
@@ -67,6 +70,7 @@
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Snapshot.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StudentFactory.cs" />
     <EmbeddedResource Include="Form1.resx">

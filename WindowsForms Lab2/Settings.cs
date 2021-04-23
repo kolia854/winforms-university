@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WindowsForms_Lab2
+﻿namespace WindowsForms_Lab2
 {
     class Singleton
     {
-        private static Singleton settings;
 
-        public static Singleton GetInstance()
+        private static Form1 settings;
+
+        public static Form1 GetInstance()
         {
-            if (settings == null)
+            lock (settings)  // вот это вот надо будет допоказать 
             {
-                settings = new Singleton();
+                if (settings == null)
+                {
+                    settings = new Form1();
+                }
+                return settings;
             }
-            return settings;
         }
 
-        public static void GetCurrentSettings()
+        public static Form1 GetCurrentSettings()
         {
-            
+            return settings;
         }
 
 

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsForms_Lab2
 {
@@ -10,8 +6,7 @@ namespace WindowsForms_Lab2
     {
         public Student CreateStudent(string fio, int age, DateTime birth, int course, int avg, string sex, string speciality, bool brsm, AdressClass adress)
         {
-            Student student = new Student(fio, age, birth, course, avg, sex, speciality, brsm, adress);
-            return student;
+            return new Student(fio, age, birth, course, avg, sex, speciality, brsm, adress);
         }
 
         public AdressClass CreateAdress(string c, string s, string h, string f)

@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace WindowsForms_Lab2
 {
@@ -48,7 +43,7 @@ namespace WindowsForms_Lab2
                 if (b is RadioButton)
                 {
                     if ((b as RadioButton).Checked)
-                        boof.Sex = Convert.ToString((b as RadioButton).Text);
+                        boof.Sex = (string)(b as RadioButton).Text;
                 }
             }
 
@@ -99,9 +94,7 @@ namespace WindowsForms_Lab2
             XmlSerializer format = new XmlSerializer(typeof(List<Student>));
             using (FileStream fs = new FileStream("SearchRasults.xml", FileMode.Create))
             {
-                {
                     formatter.Serialize(fs, SearchResults);
-                }
             }
 
             var a = from s in SearchResults

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace WindowsForms_Lab2
@@ -10,71 +6,31 @@ namespace WindowsForms_Lab2
     [Serializable]
     public class Student : Prototype
     {
-        private string fio;
-        private int age;
-        private DateTime dateofbirth;
-        private int course;
-        private int avg;
-        private string sex;
-        private string speciality;
-        private bool brsm;
-        public AdressClass Adress;
-
+        public AdressClass Adress { get; set; }
 
         [Required(ErrorMessage = "ФИО - обязательное поле")]
         [StringLength(70, MinimumLength = 2, ErrorMessage = "Некорректная длина имени")]
         [RegularExpression(@"\D+", ErrorMessage = "Фио содержит недопустимые символы")]
-        public string Fio
-        {
-            get { return fio; }
-            set { fio = value; }
-        }
+        public string Fio { get; set; }
 
         [Range(15, 100, ErrorMessage = "Указанный возраст не подходит для студента")]
-        public int Age
-         {
-            get { return age; }
-            set { age = value; }
-        }
-
-        public DateTime DateOfBirth
-         {
-            get { return dateofbirth; }
-            set { dateofbirth = value; }
-        }
+        public int Age { get; set; }
+       
+        public DateTime DateOfBirth { get; set; }
+         
 
         [Required(ErrorMessage = "Укажите курс")]
-        public int Course
-        {
-            get { return course; }
-            set { course = value; }
-        }
+        public int Course { get; set; }
 
-        public int Avg
-        {
-            get { return avg; }
-            set { avg = value; }
-        }
+        public int Avg { get; set; }
 
         [Required(ErrorMessage = "Укажите пол")]
-        public string Sex
-        {
-            get { return sex; }
-            set { sex = value; }
-        }
+        public string Sex { get; set; }
 
         [Required(ErrorMessage = "Укажите специальность")]
-        public string Speciality
-        {
-            get { return speciality; }
-            set { speciality = value; }
-        }
+        public string Speciality { get; set; }
 
-        public bool Brsm
-        {
-            get { return brsm; }
-            set { brsm = value; }
-        }
+        public bool Brsm { get; set; }
 
         public Student(string fio, int age, DateTime birth, int course, int avg, string sex, string speciality, bool brsm, AdressClass adress)
         {
@@ -91,18 +47,23 @@ namespace WindowsForms_Lab2
 
         public object Clone()
         {
-            Student ClonedStudent = new Student();
-            ClonedStudent.Adress = this.Adress;
-            ClonedStudent.Course = this.Course;
-            ClonedStudent.Fio = this.Fio;
-            ClonedStudent.sex = this.Sex;
-            ClonedStudent.Speciality = this.Speciality;
-            ClonedStudent.Avg = this.Avg;
-            ClonedStudent.Age = this.Age;
-            ClonedStudent.Brsm = this.Brsm;
-            ClonedStudent.DateOfBirth = this.DateOfBirth;
+            var ClonedStudent = new Student();
+            ClonedStudent.Adress = Adress;
+            ClonedStudent.Course = Course;
+            ClonedStudent.Fio = Fio;
+            ClonedStudent.Sex = Sex;
+            ClonedStudent.Speciality = Speciality;
+            ClonedStudent.Avg = Avg;
+            ClonedStudent.Age = Age;
+            ClonedStudent.Brsm = Brsm;
+            ClonedStudent.DateOfBirth = DateOfBirth;
             return ClonedStudent;
         }   
+
+        public void CreateSnapshot()
+        {
+            var snapshot = new Snapshot(this);
+        }
 
         public Student()
         {
